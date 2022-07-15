@@ -7,8 +7,18 @@ class PrisonerIssue:
         self.prisoner_number_in_box = random.sample(range(1,101),100)
         self.prisoner_number = 1
     
-    def perform_loop_search(self, starting_prisoner = None):
+    def perform_loop_search(self, starting_prisoner: int = None) -> int:
+        """method that allows to check how many iterations 
 
+        Args:
+            starting_prisoner (int, optional): Can specify which prisoner to use. Defaults to 1.
+
+        Raises:
+            Exception: When something gone wrong and there is an endless loop
+
+        Returns:
+            int: Iteration when prisoner found his number
+        """
         if starting_prisoner:
             box_number_to_check = starting_prisoner - 1
         else:
@@ -25,9 +35,10 @@ class PrisonerIssue:
             else:
                 box_number_to_check = current_number - 1
             i += 1
-            # time.sleep(0.2)
+            # time.sleep(0.2)r
             if i > 100:
                 raise Exception("whoah! Something gone wrong!")
+        return i
         
 if __name__ == '__main__':
     issue = PrisonerIssue()
